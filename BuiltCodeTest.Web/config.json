@@ -1,0 +1,8 @@
+{
+  "ConnectionStrings": {
+    "SqlServerConnection":  "",
+    "BuiltCodeDB": "Host=127.0.0.1;Database=BuiltCodeDB;Username=postgres;Password=111@FACIALME"
+  }
+
+
+}
