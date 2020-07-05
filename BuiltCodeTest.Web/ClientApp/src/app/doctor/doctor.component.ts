@@ -1,20 +1,20 @@
 import { Component } from "@angular/core"
+import { Doctor } from "../model/doctor";
 
 @Component({
   selector: "doctor",
   templateUrl: './doctor.component.html',
   styleUrls: ['./doctor.component.css']
 
-}) 
+})
 
 export class DoctorComponent {
-  public id: number;
-  public name: string;
-  public crm: number;
-  public crmUf: string;
+  public doctor;
 
-  public obterNome(): string {
-    return "Teste2";
+
+  constructor() {
+    this.doctor = new Doctor();
   }
-  //virtual ICollection<Patient> Patients
 }
+  //virtual ICollection<Patient> Patients
+
