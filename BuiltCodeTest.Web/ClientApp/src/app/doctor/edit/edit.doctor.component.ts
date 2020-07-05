@@ -1,16 +1,16 @@
 import { Component, OnInit } from "@angular/core"
-import { Doctor } from "../model/doctor";
+import { Doctor } from "../../model/doctor";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DoctorService } from "../../services/doctor/doctor.service";
+import { DoctorService } from "../../../services/doctor/doctor.service";
 
 @Component({
-  selector: "doctor",
-  templateUrl: './doctor.component.html',
-  styleUrls: ['./doctor.component.css']
+  selector: "create-doctor",
+  templateUrl: './edit.doctor.component.html',
+  styleUrls: ['./edit.doctor.component.css']
 
 })
 
-export class DoctorComponent implements OnInit  {
+export class EditDoctorComponent implements OnInit {
   public doctor;
   public returnUrl: string;
 
@@ -27,17 +27,6 @@ export class DoctorComponent implements OnInit  {
 
   save() {
     this.doctorService.save(this.doctor).subscribe(
-      data => {
-
-      },
-      err => {
-
-      }
-    )
-  };
-
-  getAll() {
-    this.doctorService.getAll().subscribe(
       data => {
 
       },

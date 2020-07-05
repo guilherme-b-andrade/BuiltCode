@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputName">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Nome">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Crm</label>
+        <input type="number" class="form-control" id="crm" placeholder="Crm">
+      </div>
+    </div>    
+    <div class="form-row">     
+      <div class="form-group col-md-4">
+        <label for="inputCrmUf">CrmUf</label>
+        <select id="inputCrmUf" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      </div>
+
+    <button type="submit" (click)="save()"></button>
+  </form>
+
+</body>
+</html>

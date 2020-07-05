@@ -32,7 +32,7 @@ namespace BuiltCodeTest.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Doctor doctor)
+        public IActionResult Save([FromBody]Doctor doctor)
         {
             try
             {

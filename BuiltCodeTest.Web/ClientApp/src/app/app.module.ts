@@ -10,6 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { Doctor } from './model/doctor';
+import { DoctorService } from '../services/doctor/doctor.service';
+import { PatientService } from '../services/patient/patient.service';
+import { CreateDoctorComponent } from './doctor/create/create.doctor.component';
+import { EditDoctorComponent } from './doctor/edit/edit.doctor.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,8 @@ import { DoctorComponent } from './doctor/doctor.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    DoctorComponent
+    DoctorComponent,
+    CreateDoctorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,11 +34,13 @@ import { DoctorComponent } from './doctor/doctor.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'doctor', component: DoctorComponent }
+      { path: 'doctor', component: DoctorComponent },
+      { path: 'create-doctor', component: CreateDoctorComponent },
+      { path: 'edit-doctor', component: EditDoctorComponent }
 
     ])
   ],
-  providers: [],
+  providers: [DoctorService, PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
