@@ -25,7 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\doctor\doctor.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BuiltCodeTest.Repositorio\BuiltCodeTest.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\doctor\doctor.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
