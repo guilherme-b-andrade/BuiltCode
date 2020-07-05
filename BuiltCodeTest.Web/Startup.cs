@@ -1,4 +1,6 @@
+using BuiltCodeTest.Domain.Contracts;
 using BuiltCodeTest.Repository.Context;
+using BuiltCodeTest.Repository.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +35,9 @@ namespace BuiltCodeTest.Web
             option.UseLazyLoadingProxies()
             .UseNpgsql(connectionString, 
             m =>  m.MigrationsAssembly("BuiltCodeTest.Repository")));
+
+            // Injeção de dependência
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
