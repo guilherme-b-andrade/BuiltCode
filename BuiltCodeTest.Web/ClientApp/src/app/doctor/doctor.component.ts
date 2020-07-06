@@ -13,6 +13,7 @@ import { DoctorService } from "../../services/doctor/doctor.service";
 export class DoctorComponent implements OnInit {
   public doctors: Doctor[];
   public returnUrl: string;
+  public message: string;
 
 
   ngOnInit(): void {
@@ -52,7 +53,7 @@ export class DoctorComponent implements OnInit {
           },
           err => {
 
-            console.log(err.errors);
+            this.message = err.error;
             
           })
 

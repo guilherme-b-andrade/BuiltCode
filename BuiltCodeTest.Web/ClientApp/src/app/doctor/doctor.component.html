@@ -7,6 +7,10 @@
 <body>
   <h1>Médicos</h1>
 
+  <div class="alert alert-danger" *ngIf="message">
+    {{message}}
+  </div>
+
   <button class="btn btn-primary mb-2" (click)="createDoctor()">Adicionar Médico</button>
 
   <table class="table table-striped" *ngIf="doctors">
@@ -28,9 +32,9 @@
         <td>{{d.crmUf}}</td>
         <td><button class="btn btn-success btn-sn" (click)="edit(d)">Editar</button></td>
         <td><button class="btn btn-danger btn-sn" (click)="delete(d)">Deletar</button></td>
-      </tr>     
+      </tr>
     </tbody>
   </table>
- 
+
 </body>
 </html>

@@ -29,6 +29,7 @@ export class PatientComponent implements OnInit {
 
 
 
+
     this.patientService.getAll()
       .subscribe(
         data => {

@@ -12,7 +12,7 @@ namespace BuiltCodeTest.Domain.Entities
         public String Crm { get; set; }
         public string CrmUf { get; set; }
 
-        public virtual ICollection<Patient> Patients { get; set; }
+        //public virtual ICollection<Patient> Patients { get; set; }
         public override void Validate()
         {
             if (string.IsNullOrEmpty(Name))

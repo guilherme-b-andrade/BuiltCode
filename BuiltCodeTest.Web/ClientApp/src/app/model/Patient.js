@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Doctor = /** @class */ (function () {
-    function Doctor() {
+var Patient = /** @class */ (function () {
+    function Patient() {
     }
-    return Doctor;
+    return Patient;
 }());
-exports.Doctor = Doctor;
+exports.Patient = Patient;
 //# sourceMappingURL=Patient.js.map

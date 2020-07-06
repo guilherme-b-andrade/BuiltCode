@@ -13,7 +13,7 @@
     Paciente cadastrado com sucesso!
   </div>
   <form>
-    <h1 class="h4">Cadastro de Produto</h1>
+    <h1 class="h4">Editar Paciente</h1>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="name">Nome</label>
@@ -44,7 +44,7 @@
                'is-valid':cpf.valid && (cpf.dirty || cpf.touched)
                }"
                [(ngModel)]="patient.cpf"
-               #crm="ngModel"
+               #cpf="ngModel"
                name="cpf"
                placeholder="Cpf"
                required />
@@ -61,13 +61,13 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="birthDate">BirthDate</label>
-        <input type="date"
+        <input type="datetime"
                class="form-control"
                [ngClass]="{'is-invalid': birthDate.invalid && (birthDate.dirty || birthDate.touched),
                'is-valid':birthDate.valid && (birthDate.dirty || birthDate.touched)
                }"
                [(ngModel)]="patient.birthDate"
-               #crmUf="ngModel"
+               #birthDate="ngModel"
                name="birthDate"
                placeholder="Birth Date"
                required />

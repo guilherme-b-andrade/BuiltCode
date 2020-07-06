@@ -3,15 +3,17 @@ using System;
 using BuiltCodeTest.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BuiltCodeTest.Repository.Migrations
 {
     [DbContext(typeof(BuiltCodeTestContext))]
-    partial class BuiltCodeTestContextModelSnapshot : ModelSnapshot
+    [Migration("20200706152854_007")]
+    partial class _007
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

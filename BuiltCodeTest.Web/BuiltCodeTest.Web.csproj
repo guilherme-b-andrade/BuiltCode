@@ -19,12 +19,36 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\dist\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\dist\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\dist\out-tsc\src\app\app.module.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\app.module.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\app.server.module.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\app.server.module.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\doctor\create\create.doctor.component.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\doctor\create\create.doctor.component.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\doctor\doctor.component.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\doctor\doctor.component.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\doctor\edit\edit.doctor.component.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\doctor\edit\edit.doctor.component.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\model\doctor.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\model\doctor.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\model\Patient.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\app\model\Patient.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\main.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\main.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\services\doctor\doctor.service.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\services\doctor\doctor.service.js.map" />
+    <None Remove="ClientApp\dist\out-tsc\src\services\patient\patient.service.js" />
+    <None Remove="ClientApp\dist\out-tsc\src\services\patient\patient.service.js.map" />
     <None Remove="ClientApp\src\app\doctor\create\create.doctor.component.ts" />
     <None Remove="ClientApp\src\app\doctor\doctor.component.ts" />
     <None Remove="ClientApp\src\app\doctor\edit\edit.doctor.component.ts" />
@@ -70,6 +94,10 @@
     <Content Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\Patient\report\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

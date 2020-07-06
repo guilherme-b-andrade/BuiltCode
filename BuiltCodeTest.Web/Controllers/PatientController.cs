@@ -37,6 +37,7 @@ namespace BuiltCodeTest.Web.Controllers
         {
             try
             {
+          
                 patient.Validate();
                 if (!patient.IsValid)
                 {
@@ -74,6 +75,8 @@ namespace BuiltCodeTest.Web.Controllers
         {
             try
             {
+
+               
                 //var id = patient.Id;
                 //var existPatient = _patientRepository.GetById(id).Patients;
 

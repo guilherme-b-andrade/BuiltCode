@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core"
 import { Patient } from "../../model/patient";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PatientService } from "../../../services/patient/patient.service";
+import { DoctorService } from "../../../services/doctor/doctor.service";
+import { Doctor } from "../../model/doctor";
 
 @Component({
   selector: "edit-patient",
@@ -11,6 +13,7 @@ import { PatientService } from "../../../services/patient/patient.service";
 })
 
 export class EditPatientComponent implements OnInit {
+  public doctors: Doctor[];
   public patient;
   public enable_spinner: boolean;
   public message: string;
@@ -20,6 +23,7 @@ export class EditPatientComponent implements OnInit {
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
     private patientService: PatientService) {
+
   }
 
 

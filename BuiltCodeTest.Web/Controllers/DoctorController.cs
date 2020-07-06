@@ -76,18 +76,34 @@ namespace BuiltCodeTest.Web.Controllers
         {
             try
             {
-                //var id = doctor.Id;
-                //var existPatient = _doctorRepository.GetById(id).Patients;
 
-                //if(existPatient.Count > 0)
-                //{
-                //    return BadRequest("Não é possível remover o médico, pois existe um paciente vínculado");
-                //}
+                var patients = _doctorRepository.GetPatient(doctor.Id);
+
+                if (patients.Count > 0)
+                {
+                    return BadRequest("Não é possível fazer a exclusão. O Médico tem um paciente vínculado ");
+                }
 
                 _doctorRepository.Remove(doctor);
 
 
                 return Json(_doctorRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpPost("FilterByDoctorId/{doctorId}")]
+        public IActionResult FilterByDoctorId(int doctorId)
+        {
+            try
+            {
+                var patients = _doctorRepository.GetPatient(doctorId);
+
+                return Json(patients);
             }
             catch (Exception ex)
             {

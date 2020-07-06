@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core"
 import { Patient } from "../../model/patient";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PatientService } from "../../../services/patient/patient.service";
+import { Doctor } from "../../model/doctor";
+import { DoctorService } from "../../../services/doctor/doctor.service";
 
 @Component({
   selector: "create-patient",
@@ -11,6 +13,7 @@ import { PatientService } from "../../../services/patient/patient.service";
 })
 
 export class CreatePatientComponent implements OnInit {
+  public doctors: Doctor[];
   public patient: Patient;
   public enable_spinner: boolean;
   public message: string;
@@ -20,7 +23,21 @@ export class CreatePatientComponent implements OnInit {
 
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
-    private patientService: PatientService) {
+    private patientService: PatientService, private doctorService: DoctorService) {
+
+
+    this.doctorService.getAll()
+      .subscribe(
+        data => {
+          this.doctors = data;
+        },
+        err => {
+          console.log(err.error);
+        }
+
+      )
+
+
   }
 
 

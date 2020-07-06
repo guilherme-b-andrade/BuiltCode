@@ -1,5 +1,6 @@
 ﻿using BuiltCodeTest.Domain.Contracts;
 using BuiltCodeTest.Repository.Context;
+using Remotion.Linq.Clauses;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,5 +54,7 @@ namespace BuiltCodeTest.Repository.Repositories
         {
             throw new System.NotImplementedException();
         }
+
+    
     }
 }

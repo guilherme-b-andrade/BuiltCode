@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-  <h1>Médicos</h1>
+  <h1>Pacientes</h1>
 
   <button class="btn btn-primary mb-2" (click)="createPatient()">Adicionar Paciente</button>
 
@@ -26,8 +26,8 @@
         <td>{{p.name}}</td>
         <td>{{p.birthDate}}</td>
         <td>{{p.cpf}}</td>
-        <td><button class="btn btn-success btn-sn" (click)="edit(d)">Editar</button></td>
-        <td><button class="btn btn-danger btn-sn" (click)="delete(d)">Deletar</button></td>
+        <td><button class="btn btn-success btn-sn" (click)="edit(p)">Editar</button></td>
+        <td><button class="btn btn-danger btn-sn" (click)="delete(p)">Deletar</button></td>
       </tr>     
     </tbody>
   </table>
