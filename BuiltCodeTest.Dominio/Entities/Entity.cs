@@ -24,13 +24,13 @@ namespace BuiltCodeTest.Domain.Entities
             ValidationMessage.Add(message);
         }
 
+        public abstract void Validate();
+
         public string GetValidateMessage()
         {
             return string.Join(". ", ValidationMessage);
         }
-
-        public abstract void Validate();
-
+                
         public bool IsValid
         {
             get { return !ValidationMessage.Any(); }

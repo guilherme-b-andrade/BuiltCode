@@ -22,13 +22,15 @@ namespace BuiltCodeTest.Web.Controllers
         {
             try
             {
+
                 return Json(_patientRepository.GetAll());
             }
+
             catch (Exception ex)
             {
+
                 return BadRequest(ex.ToString());
             }
-
         }
 
 
@@ -37,28 +39,31 @@ namespace BuiltCodeTest.Web.Controllers
         {
             try
             {
-
                 patient.Validate();
                 if (!patient.IsValid)
                 {
                     return BadRequest(patient.GetValidateMessage());
 
                 }
+
+                var patientCpf = _patientRepository.GetPatient(patient.Cpf).Cpf;
+
+                if (!string.IsNullOrEmpty(patientCpf))
+                {
+
+                    return BadRequest("CPF já está cadastrado no sistema");
+
+                }
+
                 if (patient.Id > 0)
                 {
                     _patientRepository.Put(patient);
                 }
                 else
                 {
-                    //var existCrm = _patientRepository.GetByCrm(patient.Crm);
-
-                    //if (existCrm != null)
-                    //{
-                    //    return BadRequest("Médico já cadastrado no sistema");
-                    //}
                     _patientRepository.Save(patient);
-                }
 
+                }
 
                 return Created("api/patient", patient);
             }
@@ -76,17 +81,7 @@ namespace BuiltCodeTest.Web.Controllers
             try
             {
 
-
-                //var id = patient.Id;
-                //var existPatient = _patientRepository.GetById(id).Patients;
-
-                //if(existPatient.Count > 0)
-                //{
-                //    return BadRequest("Não é possível remover o médico, pois existe um paciente vinculado");
-                //}
-
                 _patientRepository.Remove(patient);
-
 
                 return Json(_patientRepository.GetAll());
             }
@@ -124,7 +119,6 @@ namespace BuiltCodeTest.Web.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
     }
 }

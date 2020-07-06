@@ -13,6 +13,7 @@ namespace BuiltCodeTest.Repository.Repositories
     {
         public DoctorRepository(BuiltCodeTestContext builtCodeTestContext) : base(builtCodeTestContext)
         {
+
         }
 
         public Doctor GetByCrm(string crm)
@@ -23,8 +24,10 @@ namespace BuiltCodeTest.Repository.Repositories
         public List<Patient> GetPatient(int idDoctor)
         {
             var patient = (from p in BuiltCodeTestContext.Patients
-                           where p.DoctorId == idDoctor select p).ToList();
-            return patient ;
+                           where p.DoctorId == idDoctor
+                           select p).ToList();
+
+            return patient;
         }
     }
 }

@@ -18,7 +18,7 @@
         <option name="doctorId" *ngFor="let d of doctors" value="{{d.id}}">{{d.name}}</option>
       </select>
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="submit" (click)="filterByDoctorId()">Ação</button>
+        <button class="btn btn-outline-secondary" type="submit" (click)="filterByDoctorId()">Filtrar</button>
       </div>
     </div>
   </form>
@@ -30,7 +30,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nome</th>
-        <th scope="col">BirthDate</th>
+        <th scope="col">Data de Nascimento</th>
         <th scope="col">Cpf</th>
 
       </tr>

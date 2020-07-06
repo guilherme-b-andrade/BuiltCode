@@ -10,7 +10,7 @@ namespace BuiltCodeTest.Domain.Entities
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public string Cpf { get; set; }
-         public int DoctorId { get; set; }
+        public int DoctorId { get; set; }
         public virtual Doctor Doctor { get; set; }
 
         public override void Validate()
@@ -19,20 +19,26 @@ namespace BuiltCodeTest.Domain.Entities
 
             if (String.IsNullOrEmpty(Name))
             {
-                AddWarning("Cuidado: É necessário vincular um médico ao Paciente");
+                AddWarning("Cuidado: O Nome precisa ser preenchido");
+
+            }
+
+            if (BirthDate == Convert.ToDateTime(null))
+            {
+                AddWarning("Cuidado: A data de nascimento precisa ser preenchida");
 
             }
 
             if (DoctorId == 0)
             {
                 AddWarning("Cuidado: É necessário vincular um médico ao Paciente");
-           
-            }
-            if (string.IsNullOrEmpty(Cpf)){
 
+            }
+            if (string.IsNullOrEmpty(Cpf))
+            {
                 AddWarning("Cuidado: O CPF precisa ser peenchido");
             }
-            if (Cpf.Length > 11 || Cpf.Length < 11)
+            else if (Cpf.Length > 11 || Cpf.Length < 11)
             {
 
                 AddWarning("O CPF está inválido");

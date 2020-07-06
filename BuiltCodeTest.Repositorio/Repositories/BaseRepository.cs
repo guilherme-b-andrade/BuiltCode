@@ -8,7 +8,6 @@ namespace BuiltCodeTest.Repository.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-
         protected readonly BuiltCodeTestContext BuiltCodeTestContext;
 
         public BaseRepository(BuiltCodeTestContext builtCodeTestContext)
@@ -16,21 +15,25 @@ namespace BuiltCodeTest.Repository.Repositories
             BuiltCodeTestContext = builtCodeTestContext;
         }
 
-        public void Save(TEntity entity)
+
+        public TEntity Get(int id)
         {
-            BuiltCodeTestContext.Set<TEntity>().Add(entity);
-            BuiltCodeTestContext.SaveChanges();
+            throw new System.NotImplementedException();
         }
 
-     
         public IEnumerable<TEntity> GetAll()
         {
             return BuiltCodeTestContext.Set<TEntity>().ToList();
         }
-
         public TEntity GetById(int id)
         {
             return BuiltCodeTestContext.Set<TEntity>().Find(id);
+        }
+
+        public void Save(TEntity entity)
+        {
+            BuiltCodeTestContext.Set<TEntity>().Add(entity);
+            BuiltCodeTestContext.SaveChanges();
         }
 
         public void Put(TEntity entity)
@@ -41,20 +44,16 @@ namespace BuiltCodeTest.Repository.Repositories
 
         public void Remove(TEntity entity)
         {
-           
             BuiltCodeTestContext.Remove(entity);
             BuiltCodeTestContext.SaveChanges();
         }
+
         public void Dispose()
         {
             BuiltCodeTestContext.Dispose();
         }
 
-        public TEntity Get(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
-    
+
     }
 }

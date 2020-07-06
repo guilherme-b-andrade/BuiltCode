@@ -29,9 +29,7 @@ namespace BuiltCodeTest.Web.Controllers
             {
                 return BadRequest(ex.ToString());
             }
-
         }
-
 
 
         [HttpPost]
@@ -40,6 +38,7 @@ namespace BuiltCodeTest.Web.Controllers
             try
             {
                 doctor.Validate();
+
                 if (!doctor.IsValid)
                 {
                     return BadRequest(doctor.GetValidateMessage());
@@ -55,13 +54,13 @@ namespace BuiltCodeTest.Web.Controllers
 
                     if (existCrm != null)
                     {
-                        return BadRequest("Médico já cadastrado no sistema");
+                        return BadRequest("CRM já cadastrado no sistema");
                     }
                     _doctorRepository.Save(doctor);
                 }
 
-
                 return Created("api/doctor", doctor);
+
             }
             catch (Exception ex)
             {
@@ -93,8 +92,6 @@ namespace BuiltCodeTest.Web.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
-        }
-      
+        }      
     }
 }

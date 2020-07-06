@@ -23,5 +23,10 @@ namespace BuiltCodeTest.Repository.Repositories
                            select p).ToList();
             return patient;
         }
+
+        public Patient GetPatient(string cpf)
+        {
+            return BuiltCodeTestContext.Patients.Where(p => p.Cpf == cpf).FirstOrDefault();
+        }
     }
 }

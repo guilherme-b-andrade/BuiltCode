@@ -37,7 +37,7 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="birthDate">Birth Date</label>
+        <label for="birthDate">Data de Nascimento</label>
         <input type="date"
                class="form-control"
                [ngClass]="{'is-invalid': birthDate.invalid && (birthDate.dirty || birthDate.touched),
@@ -59,6 +59,7 @@
     </div>
 
     <div class="form-row">
+    
       <div class="form-group col-md-4">
         <label for="cpf">CPF</label>
         <input type="text"
@@ -81,32 +82,9 @@
 
     </div>
 
-    <!--<div class="form-row">
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="doctorId">DoctorId</label>
-          <input type="text"
-                 class="form-control"
-                 [ngClass]="{'is-invalid': doctorId.invalid && (doctorId.dirty || doctorId.touched),
-               'is-valid':doctorId.valid && (doctorId.dirty || doctorId.touched)
-               }"
-                 [(ngModel)]="patient.doctorId"
-                 #doctorId="ngModel"
-                 name="doctorId"
-                 placeholder="doctorId"
-                 required />
-        </div>
-
-        <div class="invalid-feedback mb-2" *ngIf="doctorId.invalid && (doctorId.dirty || doctorId.touched)">
-          <div *ngIf="doctorId.errors.required">
-            O DoctorId é de preenchimento obrigatório
-          </div>
-        </div>
-
-      </div>
-    </div>-->
-    <div class="form-row">
+    <div class="form-row">      
       <div class="form-group col-md-4">
+        <label for="doctor">Médico</label>
         <select class="custom-select" name="doctorId" [(ngModel)]='patient.doctorId' required>
           <option selected>Escolha...</option>
           <option name="doctorId" *ngFor="let d of doctors" value="{{d.id}}">{{d.name}}</option>

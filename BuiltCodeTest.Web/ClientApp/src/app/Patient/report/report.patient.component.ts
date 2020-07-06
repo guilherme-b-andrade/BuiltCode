@@ -25,22 +25,15 @@ export class ReportPatientComponent implements OnInit {
   
     this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
     this.patient = new Patient();
+    this.patients = [];
   }
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
     private patientService: PatientService, private doctorService: DoctorService) {
 
 
-    this.patientService.getAll()
-      .subscribe(
-        data => {
-          this.patients = data
-        },
-        err => {
-          console.log(err.error);
-        }
-
-      )
+   
+     
 
     this.doctorService.getAll()
       .subscribe(

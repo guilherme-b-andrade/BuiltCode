@@ -7,7 +7,16 @@ namespace BuiltCodeTest.Domain.Contracts
 {
     public interface IPatientRepository : IBaseRepository<Patient>
     {
-        List<Patient> GetPatient(int idDoctor);
+
+        /// <summary>
+        /// Get Patient filtering by doctorId
+        /// </summary>
+        /// <param name="doctorId"></param>
+        /// <returns></returns>
+        List<Patient> GetPatient(int doctorId);
+
+
+        Patient GetPatient(string cpf);
 
     }
 }
