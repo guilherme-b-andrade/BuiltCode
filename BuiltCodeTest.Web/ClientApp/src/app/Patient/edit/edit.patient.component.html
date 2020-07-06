@@ -10,7 +10,7 @@
   </div>
 
   <div class="alert alert-success" *ngIf="wasSave">
-    Usuário cadastrado com sucesso!
+    Paciente cadastrado com sucesso!
   </div>
   <form>
     <h1 class="h4">Cadastro de Produto</h1>
@@ -22,7 +22,7 @@
                [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched),
                'is-valid':name.valid && (name.dirty || name.touched)
                }"
-               [(ngModel)]="doctor.name"
+               [(ngModel)]="patient.name"
                #name="ngModel"
                name="name"
                placeholder="Nome"
@@ -37,22 +37,22 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="crm">Crm</label>
+        <label for="cpf">Cpf</label>
         <input type="text"
                class="form-control"
-               [ngClass]="{'is-invalid': crm.invalid && (crm.dirty || crm.touched),
-               'is-valid':crm.valid && (crm.dirty || crm.touched)
+               [ngClass]="{'is-invalid': cpf.invalid && (cpf.dirty || cpf.touched),
+               'is-valid':cpf.valid && (cpf.dirty || cpf.touched)
                }"
-               [(ngModel)]="doctor.crm"
+               [(ngModel)]="patient.cpf"
                #crm="ngModel"
-               name="crm"
-               placeholder="Crm"
+               name="cpf"
+               placeholder="Cpf"
                required />
       </div>
 
-      <div class="invalid-feedback mb-2" *ngIf="crm.invalid && (crm.dirty || crm.touched)">
-        <div *ngIf="crm.errors.required">
-          O CRM é de preenchimento obrigatório
+      <div class="invalid-feedback mb-2" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
+        <div *ngIf="cpf.errors.required">
+          O CPF é de preenchimento obrigatório
         </div>
       </div>
 
@@ -60,21 +60,21 @@
 
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="crmUf">CrmUf</label>
-        <input type="text"
+        <label for="birthDate">BirthDate</label>
+        <input type="date"
                class="form-control"
-               [ngClass]="{'is-invalid': crmUf.invalid && (crmUf.dirty || crmUf.touched),
-               'is-valid':crmUf.valid && (crmUf.dirty || crmUf.touched)
+               [ngClass]="{'is-invalid': birthDate.invalid && (birthDate.dirty || birthDate.touched),
+               'is-valid':birthDate.valid && (birthDate.dirty || birthDate.touched)
                }"
-               [(ngModel)]="doctor.crmUf"
+               [(ngModel)]="patient.birthDate"
                #crmUf="ngModel"
-               name="crmUf"
-               placeholder="CrmUf"
+               name="birthDate"
+               placeholder="Birth Date"
                required />
       </div>
-      <div class="invalid-feedback mb-2" *ngIf="crmUf.invalid && (crmUf.dirty || crmUf.touched)">
-        <div *ngIf="crmUf.errors.required">
-          O CRMUF é de preenchimento obrigatório
+      <div class="invalid-feedback mb-2" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+        <div *ngIf="birthDate.errors.required">
+          O birth date é de preenchimento obrigatório
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
 
     <button class="btn btn-primary" type="submit" (click)="save()" [disabled]="enable_spinner">Salvar</button>
     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="enable_spinner"></span>
-    <div><a [routerLink]='["/doctor"]'>Voltar</a></div>
+    <div><a [routerLink]='["/patient"]'>Voltar</a></div>
 
 
   </form>

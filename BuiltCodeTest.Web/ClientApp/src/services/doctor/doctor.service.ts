@@ -1,4 +1,4 @@
-import { Injectable, Inject } from "@angular/core";
+import { Injectable, Inject, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { getBaseUrl } from "../../main";
@@ -10,14 +10,22 @@ import { Doctor } from "../../app/model/doctor";
   providedIn: "root"
 
 })
-export class DoctorService {
+export class DoctorService implements OnInit {
 
-  private baseUrl: string
+  private baseUrl: string;
+  public doctor: Doctor[];
+
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
     this.baseUrl = baseUrl;
 
+  }
+  ngOnInit(): void {
+    this.doctor = [];
+  }
 
+  get headers(): HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
   }
 
   //public getAll(): Observable<Doctor> {
@@ -27,29 +35,27 @@ export class DoctorService {
 
   public save(doctor: Doctor): Observable<Doctor> {
 
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-    var body = {
-      name: doctor.name,
-      crm: doctor.crm,
-      crmUf: doctor.crmUf,
-    }
 
-    return this.http.post<Doctor>(this.baseUrl + "api/doctor", body, { headers });
+    return this.http.post<Doctor>(this.baseUrl + "api/doctor", JSON.stringify(doctor), { headers: this.headers });
   }
 
-  public getAll(): Observable<Doctor> {
+  public getAll(): Observable<Doctor[]> {
 
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-   
-
-    return this.http.get<Doctor>(this.baseUrl + "api/doctor", { headers });
-  }
-  public delete(): Observable<Doctor> {
-
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-
-
-    return this.http.get<Doctor>(this.baseUrl + "api/patient", { headers });
+    return this.http.get<Doctor[]>(this.baseUrl + "api/doctor");
   }
 
+  public get(doctorId: number): Observable<Doctor> {
+
+    return this.http.get<Doctor>(this.baseUrl + "api/doctor/doctorId");
+  }
+
+  public delete(doctor: Doctor): Observable<Doctor[]> {
+
+    return this.http.post<Doctor[]>(this.baseUrl + "api/doctor/delete", JSON.stringify(doctor), { headers: this.headers });
+  }
+
+  public put(doctor: Doctor): Observable<Doctor> {
+
+    return this.http.put<Doctor>(this.baseUrl + "api/doctor", JSON.stringify(doctor), { headers: this.headers });
+  }
 }

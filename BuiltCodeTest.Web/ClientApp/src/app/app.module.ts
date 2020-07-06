@@ -15,6 +15,9 @@ import { DoctorService } from '../services/doctor/doctor.service';
 import { PatientService } from '../services/patient/patient.service';
 import { CreateDoctorComponent } from './doctor/create/create.doctor.component';
 import { EditDoctorComponent } from './doctor/edit/edit.doctor.component';
+import { CreatePatientComponent } from './patient/create/create.patient.component';
+import { EditPatientComponent } from './patient/edit/edit.patient.component';
+import { PatientComponent } from './Patient/patient.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,11 @@ import { EditDoctorComponent } from './doctor/edit/edit.doctor.component';
     CounterComponent,
     FetchDataComponent,
     DoctorComponent,
-    CreateDoctorComponent
+    PatientComponent,
+    CreateDoctorComponent,
+    EditDoctorComponent,
+    CreatePatientComponent,
+    EditPatientComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,7 +43,10 @@ import { EditDoctorComponent } from './doctor/edit/edit.doctor.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'doctor', component: DoctorComponent },
       { path: 'create-doctor', component: CreateDoctorComponent },
-      { path: 'edit-doctor', component: EditDoctorComponent }
+      { path: 'edit-doctor', component: EditDoctorComponent },
+      { path: 'patient', component: PatientComponent },
+        { path: 'create-patient', component: CreatePatientComponent },
+      { path: 'edit-patient', component: EditPatientComponent }
 
     ])
   ],

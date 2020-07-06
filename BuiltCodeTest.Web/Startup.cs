@@ -38,7 +38,7 @@ namespace BuiltCodeTest.Web
 
             // Injeção de dependência
             services.AddScoped<IDoctorRepository, DoctorRepository>();
-
+            services.AddScoped<IPatientRepository, PatientRepository>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

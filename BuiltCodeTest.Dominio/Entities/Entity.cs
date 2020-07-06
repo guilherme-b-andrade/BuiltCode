@@ -19,14 +19,19 @@ namespace BuiltCodeTest.Domain.Entities
         {
             ValidationMessage.Clear();
         }
-        protected void AddWarning(string mensagem)
+        protected void AddWarning(string message)
         {
-            ValidationMessage.Add(mensagem);
+            ValidationMessage.Add(message);
+        }
+
+        public string GetValidateMessage()
+        {
+            return string.Join(". ", ValidationMessage);
         }
 
         public abstract void Validate();
 
-        protected bool IsValid
+        public bool IsValid
         {
             get { return !ValidationMessage.Any(); }
         }

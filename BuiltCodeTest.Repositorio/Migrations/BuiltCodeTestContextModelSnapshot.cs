@@ -24,8 +24,7 @@ namespace BuiltCodeTest.Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Crm")
-                        .IsRequired();
+                    b.Property<int>("Crm");
 
                     b.Property<string>("CrmUf")
                         .IsRequired();

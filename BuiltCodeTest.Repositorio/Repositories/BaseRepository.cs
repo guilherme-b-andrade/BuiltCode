@@ -40,6 +40,7 @@ namespace BuiltCodeTest.Repository.Repositories
 
         public void Remove(TEntity entity)
         {
+           
             BuiltCodeTestContext.Remove(entity);
             BuiltCodeTestContext.SaveChanges();
         }
@@ -48,5 +49,9 @@ namespace BuiltCodeTest.Repository.Repositories
             BuiltCodeTestContext.Dispose();
         }
 
+        public TEntity Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

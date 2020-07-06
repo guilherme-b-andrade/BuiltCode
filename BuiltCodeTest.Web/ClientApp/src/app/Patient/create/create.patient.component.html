@@ -13,7 +13,7 @@
     Usuário cadastrado com sucesso!
   </div>
   <form>
-    <h1 class="h4">Cadastro de Produto</h1>
+    <h1 class="h4">Cadastro de Paciente</h1>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="name">Nome</label>
@@ -22,7 +22,7 @@
                [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched),
                'is-valid':name.valid && (name.dirty || name.touched)
                }"
-               [(ngModel)]="doctor.name"
+               [(ngModel)]="patient.name"
                #name="ngModel"
                name="name"
                placeholder="Nome"
@@ -43,7 +43,7 @@
                [ngClass]="{'is-invalid': crm.invalid && (crm.dirty || crm.touched),
                'is-valid':crm.valid && (crm.dirty || crm.touched)
                }"
-               [(ngModel)]="doctor.crm"
+               [(ngModel)]="patient.crm"
                #crm="ngModel"
                name="crm"
                placeholder="Crm"
@@ -66,7 +66,7 @@
                [ngClass]="{'is-invalid': crmUf.invalid && (crmUf.dirty || crmUf.touched),
                'is-valid':crmUf.valid && (crmUf.dirty || crmUf.touched)
                }"
-               [(ngModel)]="doctor.crmUf"
+               [(ngModel)]="patient.crmUf"
                #crmUf="ngModel"
                name="crmUf"
                placeholder="CrmUf"
@@ -79,10 +79,35 @@
       </div>
     </div>
 
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="doctorId">DoctorId</label>
+        <select class="custom-select" *ngFor="let d of doctors">          
+          <option value="1">{{d.name}}</option>    
+        </select>
+        <!--<input type="se"
+         class="form-control"
+         [ngClass]="{'is-invalid': crmUf.invalid && (crmUf.dirty || crmUf.touched),
+         'is-valid':crmUf.valid && (crmUf.dirty || crmUf.touched)
+         }"
+         [(ngModel)]="patient.crmUf"
+         #crmUf="ngModel"
+         name="crmUf"
+         placeholder="CrmUf"
+         required />-->
+      </div>
+      <div class="invalid-feedback mb-2" *ngIf="crmUf.invalid && (crmUf.dirty || crmUf.touched)">
+        <div *ngIf="crmUf.errors.required">
+          O CRMUF é de preenchimento obrigatório
+        </div>
+      </div>
+    </div>
 
-    <button class="btn btn-primary" type="submit" (click)="save()" [disabled]="enable_spinner">Salvar</button>
+
+
+    <button class="btn btn-primary" type="submit" (click)="save()" [disabled]="enable_spinner">Cadastrar</button>
     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="enable_spinner"></span>
-    <div><a [routerLink]='["/doctor"]'>Voltar</a></div>
+    <div><a [routerLink]='["/patient"]'>Voltar</a></div>
 
 
   </form>

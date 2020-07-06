@@ -1,17 +1,17 @@
 import { Component, OnInit } from "@angular/core"
-import { Doctor } from "../../model/doctor";
+import { Patient } from "../../model/patient";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DoctorService } from "../../../services/doctor/doctor.service";
+import { PatientService } from "../../../services/patient/patient.service";
 
 @Component({
-  selector: "edit-doctor",
-  templateUrl: './edit.doctor.component.html',
-  styleUrls: ['./edit.doctor.component.css']
+  selector: "edit-patient",
+  templateUrl: './edit.patient.component.html',
+  styleUrls: ['./edit.patient.component.css']
 
 })
 
-export class EditDoctorComponent implements OnInit {
-  public doctor;
+export class EditPatientComponent implements OnInit {
+  public patient;
   public enable_spinner: boolean;
   public message: string;
   public wasSave: boolean;
@@ -19,17 +19,17 @@ export class EditDoctorComponent implements OnInit {
 
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
-    private doctorService: DoctorService) {
+    private patientService: PatientService) {
   }
 
 
   ngOnInit(): void {
-    var doctorSession = sessionStorage.getItem('doctorSession');
-    if (doctorSession) {
-      this.doctor = JSON.parse(doctorSession);
+    var patientSession = sessionStorage.getItem('patientSession');
+    if (patientSession) {
+      this.patient = JSON.parse(patientSession);
     }
     else {
-      this.doctor = new Doctor();
+      this.patient = new Patient();
     }
     //this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
 
@@ -37,13 +37,13 @@ export class EditDoctorComponent implements OnInit {
 
   save() {
 
-    this.doctorService.save(this.doctor).
+    this.patientService.save(this.patient).
       subscribe(
         data => {
           this.enable_spinner = false;
           this.wasSave = true;
           this.message = "";
-          this.router.navigate(['/doctor']);
+          this.router.navigate(['/patient']);
 
         },
         err => {

@@ -15,35 +15,82 @@ namespace BuiltCodeTest.Web.Controllers
         public DoctorController(IDoctorRepository doctorRepository)
         {
             _doctorRepository = doctorRepository;
-        }       
-        
+        }
+
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             try
             {
-                return Ok(_doctorRepository.GetAll());
+                return Json(_doctorRepository.GetAll());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
 
         }
 
+
+
         [HttpPost]
-        public IActionResult Save([FromBody]Doctor doctor)
+        public IActionResult Save([FromBody] Doctor doctor)
         {
             try
             {
-               
-                _doctorRepository.Save(doctor);
+                doctor.Validate();
+                if (!doctor.IsValid)
+                {
+                    return BadRequest(doctor.GetValidateMessage());
 
-                return Created("api/doctor",doctor);
+                }
+                if (doctor.Id > 0)
+                {
+                    _doctorRepository.Put(doctor);
+                }
+                else
+                {
+                    var existCrm = _doctorRepository.GetByCrm(doctor.Crm);
+
+                    if (existCrm != null)
+                    {
+                        return BadRequest("Médico já cadastrado no sistema");
+                    }
+                    _doctorRepository.Save(doctor);
+                }
+
+
+                return Created("api/doctor", doctor);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.ToString());
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+        [HttpPost("Delete")]
+        public IActionResult Delete([FromBody] Doctor doctor)
+        {
+            try
+            {
+                //var id = doctor.Id;
+                //var existPatient = _doctorRepository.GetById(id).Patients;
+
+                //if(existPatient.Count > 0)
+                //{
+                //    return BadRequest("Não é possível remover o médico, pois existe um paciente vínculado");
+                //}
+
+                _doctorRepository.Remove(doctor);
+
+
+                return Json(_doctorRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
 
         }

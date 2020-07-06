@@ -1,4 +1,4 @@
-import { Injectable, Inject } from "@angular/core";
+import { Injectable, Inject, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { getBaseUrl } from "../../main";
@@ -13,6 +13,7 @@ import { Patient } from "../../app/model/Patient";
 export class PatientService {
 
   private baseUrl: string
+  public patient: Patient[];
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
     this.baseUrl = baseUrl;
@@ -20,34 +21,42 @@ export class PatientService {
 
   }
 
+  ngOnInit(): void {
+    this.patient = [];
+  }
+
+  get headers(): HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
+  }
+
+  //public getAll(): Observable<patient> {
+
+  //  this.http.get()
+  //}
 
   public save(patient: Patient): Observable<Patient> {
 
-  const headers = new HttpHeaders().set('content-type', 'application/json');
-  var body = {
-    name: patient.name,
-    bithDate: patient.birthDate,
-    cpf: patient.cpf,
-    doctorId: patient.doctorId
+
+    return this.http.post<Patient>(this.baseUrl + "api/patient", JSON.stringify(patient), { headers: this.headers });
   }
 
-  return this.http.post<Patient>(this.baseUrl + "api/patient", body, { headers });
-}
+  public getAll(): Observable<Patient[]> {
 
-  public getAll(): Observable < Patient > {
+    return this.http.get<Patient[]>(this.baseUrl + "api/patient");
+  }
 
-  const headers = new HttpHeaders().set('content-type', 'application/json');
+  public get(patientId: number): Observable<Patient> {
 
+    return this.http.get<Patient>(this.baseUrl + "api/patient/patientId");
+  }
 
-  return this.http.get<Patient>(this.baseUrl + "api/patient", { headers });
-}
+  public delete(patient: Patient): Observable<Patient[]> {
 
-  public delete (): Observable < Patient > {
+    return this.http.post<Patient[]>(this.baseUrl + "api/patient/delete", JSON.stringify(patient), { headers: this.headers });
+  }
 
-  const headers = new HttpHeaders().set('content-type', 'application/json');
+  public put(patient: Patient): Observable<Patient> {
 
-
-  return this.http.get<Patient>(this.baseUrl + "api/patient", { headers });
-}
-
+    return this.http.put<Patient>(this.baseUrl + "api/patient", JSON.stringify(patient), { headers: this.headers });
+  }
 }

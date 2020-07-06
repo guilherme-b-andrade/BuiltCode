@@ -1,33 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+  <meta charset="utf-8" />
+  <title></title>
 </head>
 <body>
+  <div class="alert alert-danger" *ngIf="message">
+    {{message}}
+  </div>
+
+  <div class="alert alert-success" *ngIf="wasSave">
+    Usuário cadastrado com sucesso!
+  </div>
   <form>
+    <h1 class="h4">Cadastro de Produto</h1>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputName">Nome</label>
-        <input type="text" class="form-control" id="name" placeholder="Nome">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Crm</label>
-        <input type="number" class="form-control" id="crm" placeholder="Crm">
-      </div>
-    </div>    
-    <div class="form-row">     
-      <div class="form-group col-md-4">
-        <label for="inputCrmUf">CrmUf</label>
-        <select id="inputCrmUf" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
+        <label for="name">Nome</label>
+        <input type="text"
+               class="form-control"
+               [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched),
+               'is-valid':name.valid && (name.dirty || name.touched)
+               }"
+               [(ngModel)]="doctor.name"
+               #name="ngModel"
+               name="name"
+               placeholder="Nome"
+               required />
       </div>
 
-    <button type="submit" (click)="save()"></button>
+      <div class="invalid-feedback mb-2" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div *ngIf="name.errors.required">
+          O nome é de preenchimento obrigatório
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="crm">Crm</label>
+        <input type="text"
+               class="form-control"
+               [ngClass]="{'is-invalid': crm.invalid && (crm.dirty || crm.touched),
+               'is-valid':crm.valid && (crm.dirty || crm.touched)
+               }"
+               [(ngModel)]="doctor.crm"
+               #crm="ngModel"
+               name="crm"
+               placeholder="Crm"
+               required />
+      </div>
+
+      <div class="invalid-feedback mb-2" *ngIf="crm.invalid && (crm.dirty || crm.touched)">
+        <div *ngIf="crm.errors.required">
+          O CRM é de preenchimento obrigatório
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="crmUf">CrmUf</label>
+        <input type="text"
+               class="form-control"
+               [ngClass]="{'is-invalid': crmUf.invalid && (crmUf.dirty || crmUf.touched),
+               'is-valid':crmUf.valid && (crmUf.dirty || crmUf.touched)
+               }"
+               [(ngModel)]="doctor.crmUf"
+               #crmUf="ngModel"
+               name="crmUf"
+               placeholder="CrmUf"
+               required />
+      </div>
+      <div class="invalid-feedback mb-2" *ngIf="crmUf.invalid && (crmUf.dirty || crmUf.touched)">
+        <div *ngIf="crmUf.errors.required">
+          O CRMUF é de preenchimento obrigatório
+        </div>
+      </div>
+    </div>
+
+
+    <button class="btn btn-primary" type="submit" (click)="save()" [disabled]="enable_spinner">Cadastrar</button>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="enable_spinner"></span>
+    <div><a [routerLink]='["/doctor"]'>Voltar</a></div>
+
+
   </form>
+
+
+
 
 </body>
 </html>

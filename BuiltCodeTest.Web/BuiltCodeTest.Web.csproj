@@ -30,6 +30,9 @@
     <None Remove="ClientApp\src\app\doctor\edit\edit.doctor.component.ts" />
     <None Remove="ClientApp\src\app\model\doctor.ts" />
     <None Remove="ClientApp\src\app\model\Patient.ts" />
+    <None Remove="ClientApp\src\app\Patient\create\create.patient.component.ts" />
+    <None Remove="ClientApp\src\app\Patient\edit\edit.patient.component.ts" />
+    <None Remove="ClientApp\src\app\Patient\patient.component.ts" />
     <None Remove="ClientApp\src\services\doctor\doctor.service.ts" />
     <None Remove="ClientApp\src\services\patient\patient.service.ts" />
   </ItemGroup>
@@ -50,6 +53,15 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\model\doctor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Patient\create\create.patient.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Patient\patient.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Patient\edit\edit.patient.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\services\doctor\doctor.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\patient\patient.service.ts" />
   </ItemGroup>
@@ -58,10 +70,6 @@
     <Content Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\Patient\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

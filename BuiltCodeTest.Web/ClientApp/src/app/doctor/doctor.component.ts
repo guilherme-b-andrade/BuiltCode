@@ -10,42 +10,63 @@ import { DoctorService } from "../../services/doctor/doctor.service";
 
 })
 
-export class DoctorComponent implements OnInit  {
-  public doctor;
+export class DoctorComponent implements OnInit {
+  public doctors: Doctor[];
   public returnUrl: string;
 
 
+  ngOnInit(): void {
+   
+    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
+
+  }
+
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
     private doctorService: DoctorService) {
+
+    this.doctorService.getAll()
+      .subscribe(
+        data => {
+          this.doctors = data
+        },
+        err => {
+          console.log(err.error);
+        }
+
+      )
   }
 
+  public createDoctor() {
 
-  ngOnInit(): void {
-    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
-    this.doctor = new Doctor();
+    return this.router.navigate(['/create-doctor']);
   }
 
-  save() {
-    this.doctorService.save(this.doctor).subscribe(
-      data => {
+  public delete(doctor: Doctor) {
+    var value = confirm("Deseja realmente deletar o médico selecionado?");
+    if (value == true ) {
 
-      },
-      err => {
+      this.doctorService.delete(doctor)
+        .subscribe(
+          data => {
+            this.doctors = data;
+          },
+          err => {
 
-      }
-    )
-  };
+            console.log(err.errors);
+            
+          })
 
-  getAll() {
-    this.doctorService.getAll().subscribe(
-      data => {
+    }
+  }
+  public edit(doctor: Doctor) {
 
-      },
-      err => {
+    sessionStorage.setItem('doctorSession', JSON.stringify(doctor));
+    this.router.navigate(['/edit-doctor']);
+    
+  }
 
-      }
-    )
-  };
+  
+
 }
   //virtual ICollection<Patient> Patients
 
