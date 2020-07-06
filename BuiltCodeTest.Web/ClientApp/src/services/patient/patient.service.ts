@@ -59,4 +59,9 @@ export class PatientService {
 
     return this.http.put<Patient>(this.baseUrl + "api/patient", JSON.stringify(patient), { headers: this.headers });
   }
+
+  public filterByDoctorId(doctorId: number): Observable<Patient[]> {
+
+    return this.http.get<Patient[]>(this.baseUrl + "api/patient/FilterByDoctorId/" + doctorId);
+  }
 }

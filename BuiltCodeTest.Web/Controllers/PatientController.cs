@@ -37,7 +37,7 @@ namespace BuiltCodeTest.Web.Controllers
         {
             try
             {
-          
+
                 patient.Validate();
                 if (!patient.IsValid)
                 {
@@ -76,19 +76,49 @@ namespace BuiltCodeTest.Web.Controllers
             try
             {
 
-               
+
                 //var id = patient.Id;
                 //var existPatient = _patientRepository.GetById(id).Patients;
 
                 //if(existPatient.Count > 0)
                 //{
-                //    return BadRequest("Não é possível remover o médico, pois existe um paciente vínculado");
+                //    return BadRequest("Não é possível remover o médico, pois existe um paciente vinculado");
                 //}
 
                 _patientRepository.Remove(patient);
 
 
                 return Json(_patientRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpGet("FilterByDoctorId/{doctorId}")]
+        public IActionResult FilterByDoctorId(int doctorId)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(doctorId.ToString()))
+                {
+
+                    return Json(_patientRepository.GetAll());
+
+                }
+
+                var patients = _patientRepository.GetPatient(doctorId);
+
+                if (patients.Count == 0)
+                {
+
+                    return BadRequest($"O médico não tem nenhum paciente vinculado.");
+                }
+
+
+                return Json(patients);
             }
             catch (Exception ex)
             {

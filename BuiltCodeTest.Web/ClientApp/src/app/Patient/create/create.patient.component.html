@@ -13,7 +13,7 @@
     Usuário cadastrado com sucesso!
   </div>
   <form>
-    <h1 class="h4">Cadastro de Paciente</h1>
+    <h1 class="h4">Cadastro de Pacientes</h1>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="name">Nome</label>
@@ -63,20 +63,22 @@
         <label for="cpf">CPF</label>
         <input type="text"
                class="form-control"
-               [ngClass]="{'is-invalid': cpf.invalid && (cpf.dirty || cpf.touched),
+               [ngClass]="{'is-invalid': cpf.invalid && (cpf.dirty || cpf.touched ),
                'is-valid':cpf.valid && (cpf.dirty || cpf.touched)
                }"
                [(ngModel)]="patient.cpf"
                #cpf="ngModel"
                name="crmUf"
                placeholder="CPF"
+               ng-maxlength="11"
                required />
       </div>
-      <div class="invalid-feedback mb-2" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
+      <div class="invalid-feedback mb-2" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched )">
         <div *ngIf="cpf.errors.required">
           O CPF é de preenchimento obrigatório
         </div>
       </div>
+
     </div>
 
     <!--<div class="form-row">
@@ -105,27 +107,20 @@
     </div>-->
     <div class="form-row">
       <div class="form-group col-md-4">
-        <select class="custom-select" name="doctorId"  [(ngModel)]='patient.doctorId' required>
+        <select class="custom-select" name="doctorId" [(ngModel)]='patient.doctorId' required>
           <option selected>Escolha...</option>
-          <option  name="doctorId" *ngFor="let d of doctors" value="{{d.id}}">{{d.name}}</option>
+          <option name="doctorId" *ngFor="let d of doctors" value="{{d.id}}">{{d.name}}</option>
         </select>
-        </div>
       </div>
+    </div>
 
 
+    <button class="btn btn-primary" type="submit" (click)="save()" [disabled]="enable_spinner">Cadastrar</button>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="enable_spinner"></span>
+    <div><a [routerLink]='["/patient"]'>Voltar</a></div>
 
 
-
-
-      <button class="btn btn-primary" type="submit" (click)="save()" [disabled]="enable_spinner">Cadastrar</button>
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="enable_spinner"></span>
-      <div><a [routerLink]='["/patient"]'>Voltar</a></div>
-
-
-</form>
-
-
-
+  </form>
 
 </body>
 </html>

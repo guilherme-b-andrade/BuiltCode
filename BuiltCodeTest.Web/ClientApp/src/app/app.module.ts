@@ -18,6 +18,8 @@ import { EditDoctorComponent } from './doctor/edit/edit.doctor.component';
 import { CreatePatientComponent } from './patient/create/create.patient.component';
 import { EditPatientComponent } from './patient/edit/edit.patient.component';
 import { PatientComponent } from './Patient/patient.component';
+import { ReportPatientComponent } from './Patient/report/report.patient.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { PatientComponent } from './Patient/patient.component';
     CreateDoctorComponent,
     EditDoctorComponent,
     CreatePatientComponent,
-    EditPatientComponent
+    EditPatientComponent,
+    ReportPatientComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -46,7 +49,8 @@ import { PatientComponent } from './Patient/patient.component';
       { path: 'edit-doctor', component: EditDoctorComponent },
       { path: 'patient', component: PatientComponent },
         { path: 'create-patient', component: CreatePatientComponent },
-      { path: 'edit-patient', component: EditPatientComponent }
+      { path: 'edit-patient', component: EditPatientComponent },
+      { path: 'report-patient', component: ReportPatientComponent }
 
     ])
   ],

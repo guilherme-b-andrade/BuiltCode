@@ -32,6 +32,12 @@ namespace BuiltCodeTest.Domain.Entities
 
                 AddWarning("Cuidado: O CPF precisa ser peenchido");
             }
+            if (Cpf.Length > 11 || Cpf.Length < 11)
+            {
+
+                AddWarning("O CPF está inválido");
+            }
+
         }
     }
 }

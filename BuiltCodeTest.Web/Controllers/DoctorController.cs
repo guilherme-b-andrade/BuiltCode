@@ -67,7 +67,7 @@ namespace BuiltCodeTest.Web.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
+         
         }
 
 
@@ -81,7 +81,7 @@ namespace BuiltCodeTest.Web.Controllers
 
                 if (patients.Count > 0)
                 {
-                    return BadRequest("Não é possível fazer a exclusão. O Médico tem um paciente vínculado ");
+                    return BadRequest("Não é possível fazer a exclusão. O Médico tem um paciente vinculado ");
                 }
 
                 _doctorRepository.Remove(doctor);
@@ -95,21 +95,6 @@ namespace BuiltCodeTest.Web.Controllers
             }
 
         }
-
-        [HttpPost("FilterByDoctorId/{doctorId}")]
-        public IActionResult FilterByDoctorId(int doctorId)
-        {
-            try
-            {
-                var patients = _doctorRepository.GetPatient(doctorId);
-
-                return Json(patients);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
-        }
+      
     }
 }

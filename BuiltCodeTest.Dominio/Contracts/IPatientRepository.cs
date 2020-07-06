@@ -7,7 +7,7 @@ namespace BuiltCodeTest.Domain.Contracts
 {
     public interface IPatientRepository : IBaseRepository<Patient>
     {
-
+        List<Patient> GetPatient(int idDoctor);
 
     }
 }

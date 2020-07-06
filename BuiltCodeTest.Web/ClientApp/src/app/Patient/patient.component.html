@@ -21,10 +21,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of patients">
-        <th scope="row">1</th>
+      <tr *ngFor="let p of patients; let i = index">
+        <th scope="row">{{i + 1}}</th>
         <td>{{p.name}}</td>
-        <td>{{p.birthDate}}</td>
+        <td>{{p.birthDate | date: 'dd-MM-yyyy' }}</td>
         <td>{{p.cpf}}</td>
         <td><button class="btn btn-success btn-sn" (click)="edit(p)">Editar</button></td>
         <td><button class="btn btn-danger btn-sn" (click)="delete(p)">Deletar</button></td>

@@ -25,6 +25,7 @@
                [(ngModel)]="patient.name"
                #name="ngModel"
                name="name"
+              
                placeholder="Nome"
                required />
       </div>
@@ -61,13 +62,15 @@
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="birthDate">BirthDate</label>
-        <input type="datetime"
+        <input type="date"
                class="form-control"
                [ngClass]="{'is-invalid': birthDate.invalid && (birthDate.dirty || birthDate.touched),
                'is-valid':birthDate.valid && (birthDate.dirty || birthDate.touched)
                }"
-               [(ngModel)]="patient.birthDate"
+             
+               [ngModel]="patient.birthDate | date: 'yyyy-MM-dd'" (ngModelChange)="patient.birthDate = $event"
                #birthDate="ngModel"
+                value=""
                name="birthDate"
                placeholder="Birth Date"
                required />

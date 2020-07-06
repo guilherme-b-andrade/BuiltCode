@@ -16,13 +16,13 @@ namespace BuiltCodeTest.Domain.Entities
         public override void Validate()
         {
             if (string.IsNullOrEmpty(Name))
-                AddWarning("Nome do médico não foi informado");
+                AddWarning("O Nome do médico não foi informado");
 
             if (string.IsNullOrEmpty(Crm))
-                AddWarning("Crm do médico não foi informado");
+                AddWarning("O Crm do médico não foi informado");
 
             if (string.IsNullOrEmpty(CrmUf))
-                AddWarning("CrmUf do médico não foi informado");
+                AddWarning("O CrmUf do médico não foi informado");
 
         }
        

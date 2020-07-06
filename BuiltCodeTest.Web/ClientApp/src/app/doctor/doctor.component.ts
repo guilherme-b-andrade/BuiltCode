@@ -16,10 +16,11 @@ export class DoctorComponent implements OnInit {
   public message: string;
 
 
-  ngOnInit(): void {
-   
-    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
 
+  ngOnInit(): void {
+    
+    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
+   
   }
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,

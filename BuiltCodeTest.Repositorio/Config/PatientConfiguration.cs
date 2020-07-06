@@ -21,7 +21,8 @@ namespace BuiltCodeTest.Repository.Config
                 .IsRequired();
 
             builder.Property(d => d.Cpf)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(11);
 
             builder.Property(d => d.DoctorId)
                 .IsRequired();
