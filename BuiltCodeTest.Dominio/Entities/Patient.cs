@@ -17,7 +17,13 @@ namespace BuiltCodeTest.Domain.Entities
         {
             ClearValidationMessage();
 
-            if (DoctorId != 0)
+            if (String.IsNullOrEmpty(Name))
+            {
+                AddWarning("Cuidado: É necessário vincular um médico ao Paciente");
+
+            }
+
+            if (DoctorId == 0)
             {
                 AddWarning("Cuidado: É necessário vincular um médico ao Paciente");
            

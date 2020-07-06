@@ -40,7 +40,9 @@ export class CreatePatientComponent implements OnInit {
         this.router.navigate(['/patient']);
       },
       err => {
-     
+        this.enable_spinner = false;
+        this.wasSave = false;
+        this.message = err.error;
       }
     )
   };

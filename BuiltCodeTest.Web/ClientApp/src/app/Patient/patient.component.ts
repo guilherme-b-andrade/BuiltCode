@@ -43,16 +43,7 @@ export class PatientComponent implements OnInit {
 
   public createPatient() {
   
-    this.doctorService.getAll()
-      .subscribe(
-        data => {
-          this.doctors = data;
-        },
-        err => {
-          console.log(err.error);
-        }
 
-      )
     return this.router.navigate(['/create-patient']);
   }
 

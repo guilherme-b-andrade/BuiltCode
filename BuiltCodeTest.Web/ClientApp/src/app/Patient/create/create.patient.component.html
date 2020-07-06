@@ -37,22 +37,22 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="crm">Crm</label>
-        <input type="text"
+        <label for="birthDate">Birth Date</label>
+        <input type="date"
                class="form-control"
-               [ngClass]="{'is-invalid': crm.invalid && (crm.dirty || crm.touched),
-               'is-valid':crm.valid && (crm.dirty || crm.touched)
+               [ngClass]="{'is-invalid': birthDate.invalid && (birthDate.dirty || birthDate.touched),
+               'is-valid':birthDate.valid && (birthDate.dirty || birthDate.touched)
                }"
-               [(ngModel)]="patient.crm"
-               #crm="ngModel"
-               name="crm"
-               placeholder="Crm"
+               [(ngModel)]="patient.birthDate"
+               #birthDate="ngModel"
+               name="birthDate"
+               placeholder="Birth Date"
                required />
       </div>
 
-      <div class="invalid-feedback mb-2" *ngIf="crm.invalid && (crm.dirty || crm.touched)">
-        <div *ngIf="crm.errors.required">
-          O CRM é de preenchimento obrigatório
+      <div class="invalid-feedback mb-2" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+        <div *ngIf="birthDate.errors.required">
+          O Birth Date é de preenchimento obrigatório
         </div>
       </div>
 
@@ -60,47 +60,47 @@
 
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="crmUf">CrmUf</label>
+        <label for="cpf">CPF</label>
         <input type="text"
                class="form-control"
-               [ngClass]="{'is-invalid': crmUf.invalid && (crmUf.dirty || crmUf.touched),
-               'is-valid':crmUf.valid && (crmUf.dirty || crmUf.touched)
+               [ngClass]="{'is-invalid': cpf.invalid && (cpf.dirty || cpf.touched),
+               'is-valid':cpf.valid && (cpf.dirty || cpf.touched)
                }"
-               [(ngModel)]="patient.crmUf"
-               #crmUf="ngModel"
+               [(ngModel)]="patient.cpf"
+               #cpf="ngModel"
                name="crmUf"
-               placeholder="CrmUf"
+               placeholder="CPF"
                required />
       </div>
-      <div class="invalid-feedback mb-2" *ngIf="crmUf.invalid && (crmUf.dirty || crmUf.touched)">
-        <div *ngIf="crmUf.errors.required">
-          O CRMUF é de preenchimento obrigatório
+      <div class="invalid-feedback mb-2" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
+        <div *ngIf="cpf.errors.required">
+          O CPF é de preenchimento obrigatório
         </div>
       </div>
     </div>
 
     <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="doctorId">DoctorId</label>
-        <select class="custom-select" *ngFor="let d of doctors">          
-          <option value="1">{{d.name}}</option>    
-        </select>
-        <!--<input type="se"
-         class="form-control"
-         [ngClass]="{'is-invalid': crmUf.invalid && (crmUf.dirty || crmUf.touched),
-         'is-valid':crmUf.valid && (crmUf.dirty || crmUf.touched)
-         }"
-         [(ngModel)]="patient.crmUf"
-         #crmUf="ngModel"
-         name="crmUf"
-         placeholder="CrmUf"
-         required />-->
-      </div>
-      <div class="invalid-feedback mb-2" *ngIf="crmUf.invalid && (crmUf.dirty || crmUf.touched)">
-        <div *ngIf="crmUf.errors.required">
-          O CRMUF é de preenchimento obrigatório
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="doctorId">DoctorId</label>
+          <input type="text"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': doctorId.invalid && (doctorId.dirty || doctorId.touched),
+               'is-valid':doctorId.valid && (doctorId.dirty || doctorId.touched)
+               }"
+                 [(ngModel)]="patient.doctorId"
+                 #doctorId="ngModel"
+                 name="doctorId"
+                 placeholder="doctorId"
+                 required />
+        </div>
+        <div class="invalid-feedback mb-2" *ngIf="doctorId.invalid && (doctorId.dirty || doctorId.touched)">
+          <div *ngIf="doctorId.errors.required">
+            O DoctorId é de preenchimento obrigatório
+          </div>
         </div>
       </div>
+     
     </div>
 
 

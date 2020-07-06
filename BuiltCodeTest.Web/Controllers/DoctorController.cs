@@ -22,7 +22,8 @@ namespace BuiltCodeTest.Web.Controllers
         {
             try
             {
-                return Json(_doctorRepository.GetAll());
+                var doctors = _doctorRepository.GetAll();
+                return Json(doctors);
             }
             catch (Exception ex)
             {
