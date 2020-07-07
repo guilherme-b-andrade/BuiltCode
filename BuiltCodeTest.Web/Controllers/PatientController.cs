@@ -46,14 +46,7 @@ namespace BuiltCodeTest.Web.Controllers
 
                 }
 
-                var patientCpf = _patientRepository.GetPatient(patient.Cpf).Cpf;
-
-                if (!string.IsNullOrEmpty(patientCpf))
-                {
-
-                    return BadRequest("CPF já está cadastrado no sistema");
-
-                }
+             
 
                 if (patient.Id > 0)
                 {
@@ -61,6 +54,15 @@ namespace BuiltCodeTest.Web.Controllers
                 }
                 else
                 {
+                    var patientCpf = _patientRepository.GetPatient(patient.Cpf);
+
+                    if (patientCpf != null)
+                    {
+
+                        return BadRequest("CPF já está cadastrado no sistema");
+
+                    }
+
                     _patientRepository.Save(patient);
 
                 }
