@@ -30,11 +30,7 @@ export class ReportPatientComponent implements OnInit {
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
     private patientService: PatientService, private doctorService: DoctorService) {
-
-
-   
      
-
     this.doctorService.getAll()
       .subscribe(
         data => {
@@ -46,8 +42,6 @@ export class ReportPatientComponent implements OnInit {
 
       )
   }
-
-
 
   public filterByDoctorId(): void {
 
@@ -66,5 +60,4 @@ export class ReportPatientComponent implements OnInit {
 
   }
 }
-  //virtual ICollection<Patient> Patients
 

@@ -19,24 +19,24 @@ namespace BuiltCodeTest.Domain.Entities
 
             if (String.IsNullOrEmpty(Name))
             {
-                AddWarning("Cuidado: O Nome precisa ser preenchido");
+                AddWarning("O Nome precisa ser preenchido");
 
             }
 
             if (BirthDate == Convert.ToDateTime(null))
             {
-                AddWarning("Cuidado: A data de nascimento precisa ser preenchida");
+                AddWarning("A data de nascimento precisa ser preenchida");
 
             }
 
             if (DoctorId == 0)
             {
-                AddWarning("Cuidado: É necessário vincular um médico ao Paciente");
+                AddWarning("É necessário vincular um médico ao Paciente");
 
             }
             if (string.IsNullOrEmpty(Cpf))
             {
-                AddWarning("Cuidado: O CPF precisa ser peenchido");
+                AddWarning("O CPF precisa ser peenchido");
             }
             else if (Cpf.Length > 11 || Cpf.Length < 11)
             {

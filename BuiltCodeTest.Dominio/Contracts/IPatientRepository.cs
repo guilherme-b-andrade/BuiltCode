@@ -16,6 +16,11 @@ namespace BuiltCodeTest.Domain.Contracts
         List<Patient> GetPatient(int doctorId);
 
 
+        /// <summary>
+        /// Get Patient filtering by CPF
+        /// </summary>
+        /// <param name="cpf"></param>
+        /// <returns></returns>
         Patient GetPatient(string cpf);
 
     }

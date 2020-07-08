@@ -44,9 +44,7 @@ namespace BuiltCodeTest.Web.Controllers
                 {
                     return BadRequest(patient.GetValidateMessage());
 
-                }
-
-             
+                }             
 
                 if (patient.Id > 0)
                 {
@@ -73,7 +71,6 @@ namespace BuiltCodeTest.Web.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
 
@@ -93,6 +90,7 @@ namespace BuiltCodeTest.Web.Controllers
             }
 
         }
+
 
         [HttpGet("FilterByDoctorId/{doctorId}")]
         public IActionResult FilterByDoctorId(int doctorId)

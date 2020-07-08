@@ -7,14 +7,12 @@ import { DoctorService } from "../../services/doctor/doctor.service";
   selector: "doctor",
   templateUrl: './doctor.component.html',
   styleUrls: ['./doctor.component.css']
-
 })
 
 export class DoctorComponent implements OnInit {
   public doctors: Doctor[];
   public returnUrl: string;
   public message: string;
-
 
 
   ngOnInit(): void {
@@ -32,9 +30,8 @@ export class DoctorComponent implements OnInit {
           this.doctors = data
         },
         err => {
-          console.log(err.error);
+          this.message = err.error;
         }
-
       )
   }
 

@@ -9,7 +9,6 @@ import { DoctorService } from "../../../services/doctor/doctor.service";
   selector: "create-patient",
   templateUrl: './create.patient.component.html',
   styleUrls: ['./create.patient.component.css']
-
 })
 
 export class CreatePatientComponent implements OnInit {
@@ -18,7 +17,6 @@ export class CreatePatientComponent implements OnInit {
   public enable_spinner: boolean;
   public message: string;
   public wasSave: boolean;
-
   public returnUrl: string;
 
 
@@ -32,12 +30,10 @@ export class CreatePatientComponent implements OnInit {
           this.doctors = data;
         },
         err => {
-          console.log(err.error);
+          this.message = err.error;
         }
 
       )
-
-
   }
 
 
@@ -64,5 +60,5 @@ export class CreatePatientComponent implements OnInit {
     )
   };
 }
-  //virtual ICollection<Patient> Patients
+
 

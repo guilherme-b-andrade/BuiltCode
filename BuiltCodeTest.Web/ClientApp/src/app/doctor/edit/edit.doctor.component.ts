@@ -31,8 +31,6 @@ export class EditDoctorComponent implements OnInit {
     else {
       this.doctor = new Doctor();
     }
-    //this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
-
   }
 
   save() {
@@ -54,5 +52,4 @@ export class EditDoctorComponent implements OnInit {
   }
 
 }
-  //virtual ICollection<Patient> Patients
 

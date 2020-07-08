@@ -23,10 +23,7 @@ namespace BuiltCodeTest.Repository.Config
 
             builder.Property(d => d.CrmUf)
                 .IsRequired();
-
-            //builder.HasMany(d => d.Patients)
-            //    .WithOne(p => p.Doctor);
-            //builder.HasKey()
+ 
         }
     }
 }

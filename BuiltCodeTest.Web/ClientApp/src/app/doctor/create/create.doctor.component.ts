@@ -32,8 +32,7 @@ export class CreateDoctorComponent implements OnInit {
   public save() {
     this.enable_spinner = true;
     this.doctorService.save(this.doctor).subscribe(
-      data => {
- 
+      data => { 
         this.enable_spinner = false;
         this.wasSave = true;
         this.message = "";
@@ -47,5 +46,4 @@ export class CreateDoctorComponent implements OnInit {
     )
   };
 }
-  //virtual ICollection<Patient> Patients
 

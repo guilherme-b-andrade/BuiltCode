@@ -7,7 +7,6 @@ namespace BuiltCodeTest.Domain.Entities
 {
     public abstract class Entity
     {
-
         private List<string> _validationMessage { get; set; }
 
         private List<string> ValidationMessage

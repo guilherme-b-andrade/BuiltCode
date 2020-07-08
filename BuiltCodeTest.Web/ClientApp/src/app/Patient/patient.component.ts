@@ -16,18 +16,17 @@ export class PatientComponent implements OnInit {
   public patients: Patient[];
   public doctors: Doctor[];
   public returnUrl: string;
+  public message: string;
 
 
   ngOnInit(): void {
-   
+
     this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
 
   }
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
     private patientService: PatientService, private doctorService: DoctorService) {
-
-
 
 
     this.patientService.getAll()
@@ -38,19 +37,17 @@ export class PatientComponent implements OnInit {
         err => {
           console.log(err.error);
         }
-
       )
   }
 
   public createPatient() {
-  
 
     return this.router.navigate(['/create-patient']);
   }
 
   public delete(patient: Patient) {
     var value = confirm("Deseja realmente deletar o médico selecionado?");
-    if (value == true ) {
+    if (value == true) {
 
       this.patientService.delete(patient)
         .subscribe(
@@ -58,22 +55,16 @@ export class PatientComponent implements OnInit {
             this.patients = data;
           },
           err => {
-
-            console.log(err.errors);
-            
+            this.message = err.error;
           })
-
     }
   }
   public edit(patient: Patient) {
 
     sessionStorage.setItem('patientSession', JSON.stringify(patient));
     this.router.navigate(['/edit-patient']);
-    
+
   }
-
-  
-
 }
-  //virtual ICollection<Patient> Patients
+
 
